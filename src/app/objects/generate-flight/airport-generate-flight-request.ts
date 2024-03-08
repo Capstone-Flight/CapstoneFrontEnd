@@ -1,6 +1,5 @@
 
 export class AirportGenerateFlightRequest {
-
     private airlineName: string;
     private flightIcao: string;
     private departAirport: string;

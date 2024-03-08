@@ -2,13 +2,15 @@ import { EllipsoidNoFly } from "../ellipsoid-no-fly/ellipsoid-no-fly";
 import { PolygonNoFly } from "../polygon-no-fly/polygon-no-fly";
 import { RectangleNoFly } from "../rectangle-no-fly/rectangle-no-fly";
 import { MilitaryBase } from '../military-base/military-base';
+import { TfrNoFly } from "../tfr-no-fly/tfr-no-fly";
 
 export class GetNoFlyZonesResponse {
 
-    public _ellipsoidNoFlyZones: EllipsoidNoFly[];
+    private _ellipsoidNoFlyZones: EllipsoidNoFly[];
     private _rectangleNoFlyZones: RectangleNoFly[];
     private _polygonNoFlyZones: PolygonNoFly[];
     private _militaryNoFlyZones: MilitaryBase[];
+    private _tfrNoFlyZones: TfrNoFly[];
 
     public get militaryNoFlyZones(): MilitaryBase[] {
         return this._militaryNoFlyZones;
@@ -41,5 +43,13 @@ export class GetNoFlyZonesResponse {
 
     public set rectangleNoFlyZones(value: RectangleNoFly[]) {
         this._rectangleNoFlyZones = value;
+    }
+
+    public get tfrNoFlyZones(): TfrNoFly[] {
+        return this._tfrNoFlyZones;
+    }
+
+    public set tfrNoFlyZones(value: TfrNoFly[]) {
+        this._tfrNoFlyZones = value;
     }
 }

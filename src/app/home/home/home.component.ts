@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { GetNoFlyZonesResponse } from 'src/app/objects/get-no-fly-zones-response/get-no-fly-zones-response';
+import { Url } from 'src/lib/utils/url';
 
 @Component({
   selector: 'app-home',
@@ -27,7 +28,7 @@ export class HomeComponent implements OnInit {
   getNoFlyZoneResponse: GetNoFlyZonesResponse;
 
   ngOnInit() {
-    this.httpClient.get<GetNoFlyZonesResponse>('http://34.198.166.4:9093/get-no-fly-zones', this.httpOptions).subscribe(data => {
+    this.httpClient.get<GetNoFlyZonesResponse>(Url.consumer('/get-no-fly-zones'), this.httpOptions).subscribe(data => {
       this.getNoFlyZoneResponse = data;
 
       console.log(data)

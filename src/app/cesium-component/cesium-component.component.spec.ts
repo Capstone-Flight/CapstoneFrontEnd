@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CesiumComponentComponent } from './cesium-component.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AppModule } from '../app.module';
 
 describe('CesiumComponentComponent', () => {
   let component: CesiumComponentComponent;
@@ -8,6 +10,7 @@ describe('CesiumComponentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [HttpClientModule, AppModule],
       declarations: [ CesiumComponentComponent ]
     })
     .compileComponents();

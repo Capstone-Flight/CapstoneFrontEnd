@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { EllipsoidNoFly } from 'src/app/objects/ellipsoid-no-fly/ellipsoid-no-fly';
 import { NoFlyZoneSubmittedComponent } from '../../no-fly-zone-submitted/no-fly-zone-submitted/no-fly-zone-submitted.component';
 import { CesiumService } from 'src/app/cesium.service';
+import { Url } from 'src/lib/utils/url';
 
 @Component({
   selector: 'app-ellipsoid-no-fly-zone',
@@ -102,9 +103,12 @@ constructor(
   }
 
   submit(): void {
+    //PLACEHOLDER
+    this.cesium.addEllipsoidNoFlyZone(this.ellipsoidNoFly);
+    /*
     // TODO
     //WILL MAKE HTTP CALL TO ADD NO FLY ZONE
-    this.httpClient.post<string>('http://34.198.166.4:9093/addNoFlyZone/ellipsoid',
+    this.httpClient.post<string>(Url.consumer('/addNoFlyZone/ellipsoid'),
      this.ellipsoidNoFly, this.httpOptions).subscribe( data => {
       console.log("LOGGING ELLIPNO CUSTOM LGU" + data);
       this.cesium.getAndLoadNoFlyZones();
@@ -113,9 +117,9 @@ constructor(
       console.log("LOGGING ELLIP CUSTOM ERROR")
       this.cesium.getAndLoadNoFlyZones();
     })
-
+    */
     document.getElementById("closeDialog")?.click();
-    
+    this.cesium.getAndLoadNoFlyZones();
 
   }
 

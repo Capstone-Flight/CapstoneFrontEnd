@@ -30,6 +30,18 @@ export class GenerateFlightRequest {
         return this.altitude;
     }
 
+    //These last 3 getters added for testing purposes
+    public getLongitudeChange(): number {
+        return this.longitudeChange;
+    }
+
+    public getLatitudeChange(): number {
+        return this.latitudeChange;
+    }
+
+    public getAltitudeChange(): number {
+        return this.altitudeChange;
+    }
 
     public setAirlineName(airlineName: string): void {
         this.airlineName = airlineName;

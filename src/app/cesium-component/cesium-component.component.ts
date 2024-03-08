@@ -3,6 +3,9 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { CesiumService } from '../cesium.service';
 import { SocketService } from '../socket.service';
 import { MatDrawer, MatSidenav } from '@angular/material/sidenav';
+import { SimulationRenderer } from 'src/lib/SimulationRenderer';
+import { Plane } from 'cesium';
+import { NoFlyZone } from 'src/lib/simulation-entities/no-fly-zone';
 
 
 @Component({
@@ -10,66 +13,37 @@ import { MatDrawer, MatSidenav } from '@angular/material/sidenav';
   templateUrl: './cesium-component.component.html',
   styleUrls: ['./cesium-component.component.css']
 })
-export class CesiumComponentComponent implements OnInit {
-  
+export class CesiumComponentComponent implements OnInit, SimulationRenderer{
   id!: string | null;
   zoneName: string;
   flightIcao: string;
 
 
   constructor(
-    private cesium: CesiumService,
-    private route: ActivatedRoute,
     private socket: SocketService
   ) { }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((params: ParamMap) => {
-      this.id = params.get('id');
-      console.log(this.id);
-    })
-
-    //console.log("CESIUM SERVICE: " + this.cesium);
-
-    // this.socket.connectToConsumer(this.cesium.flyToAndPlotPoint)
     this.socket.connectToConsumer();
   }
 
-  hideEllip() {
-    this.cesium.hideEllipsoidNoFlyz();
+  CreatePlane(): Plane {
+    throw new Error('Method not implemented.');
   }
 
-  hideRect() {
-    this.cesium.hideRectangleNoFlyz();
+  CreateNoFlyZone(): NoFlyZone {
+    throw new Error('Method not implemented.');
   }
 
-  hidePoly() {
-    this.cesium.hidePolygonNoFlys();
+  RemovePlane(plane: Plane): void {
+    throw new Error('Method not implemented.');
   }
 
-  hideMilitaryBases() {
-    this.cesium.hideMilitaryBasesNoFlyz();
+  RemoveNoFlyZone(zone: NoFlyZone): void {
+    throw new Error('Method not implemented.');
   }
 
-  hideSelected() {
-    this.cesium.hideSelected();
+  UpdatePlaneInformation(plane: Plane): void {
+    throw new Error('Method not implemented.');
   }
-
-  reset() {
-    this.cesium.resetEntities();
-  }
-
-  deleteNoFly(){
-    this.cesium.deleteNoFlyZone();
-  }
-
-  findZone() {
-    this.cesium.flyToNoFlyZone(this.zoneName);
-  }
-
-  findFlight() {
-    this.cesium.findFlight(this.flightIcao);
-  }
-  
-
 }

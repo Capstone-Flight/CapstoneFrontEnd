@@ -1,50 +1,9 @@
-
-
 .wrapper {
-    position: relative;
+  height: 100%;
+  width: 100%;
 }
 
-#hide-nofly {
-    position: absolute;
-    top: 0;
-    left: 0;
+#cesium {
+  height: 100%;
+  width: 100%;
 }
-
-
-mat-drawer {
-    /* margin: 8px; */
-    width: auto;
-    border-right: none;
-    background: lightgray;
-    color: white;
-    border-radius: 10px;
-    padding: 16px;
-    /* text-align: center; */
-    display: flex;
-    align-items: center;
-    top: 65px;
-    
-}
-
-mat-icon {
-    margin-right: 4px;
-
-}
-
-mat-drawer-container {
-    height: auto;
-    position: initial;
-}
-
-mat-toolbar {
-    background: rgb(75, 74, 73);
-    color: white;
-    text-align: center;
-    width: 25%;
-    position: absolute;
-    top: 0;
-    left: 0;
-
-}
-
-.warning:hover{ background-color: rgb(238, 9, 9);}

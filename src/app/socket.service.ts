@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-
-import * as Stomp from '@stomp/stompjs';
-import * as SockJS from 'sockjs-client';
 import '../polyfills'
 import { CesiumService } from './cesium.service';
-import { FlightDetails } from './objects/flight-details/flight-details';
-import { FlightDataFa_Id, FlightDataIdent, Position } from './objects/aero-api/flight-data';
+import { Url } from './utils/url';
+import * as SockJS from 'sockjs-client';
+import { Stomp } from '@stomp/stompjs';
+import { FlightDataFa_Id, Position } from './objects/aero-api/flight-data';
 
 
 @Injectable({
@@ -17,8 +16,8 @@ export class SocketService {
   private stompClient: any;
 
   connectToConsumer() {
-    const socket = new SockJS('http://34.198.166.4:9093/consumer-socket');
-    this.stompClient = Stomp.Stomp.over(socket);
+    const socket = new SockJS(Url.consumer('/consumer-socket'));
+    this.stompClient = Stomp.over(socket);
     this.stompClient.connect({}, (frame: any) => {
       console.log('Connected: ' + frame);
       this.stompClient.subscribe('/topic/liveCoords', (data: { body: string; }) => {
@@ -81,9 +80,6 @@ export class SocketService {
             flightIdent_Icao = flightDataFa_Id.ident;
           }
         }
-
-
-        //flightLabel = airlineName + "-" + flightIdent;
 
         if (longitudeVal != -999 && latitudeVal != -999 && altitudeVal != -999) {
           this.cesium.updateFlightsAndZones("cesium", longitudeVal, latitudeVal, altitudeVal, flightIdent_Icao, airlineName, flightDataFa_Id);

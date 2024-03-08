@@ -1,12 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 
 import { SocketService } from './socket.service';
+import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
 
 describe('SocketService', () => {
   let service: SocketService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [HttpClientModule]
+    });
     service = TestBed.inject(SocketService);
   });
 

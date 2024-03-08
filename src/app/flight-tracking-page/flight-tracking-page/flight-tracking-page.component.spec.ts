@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FlightTrackingPageComponent } from './flight-tracking-page.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AppModule } from 'src/app/app.module';
 
 describe('FlightTrackingPageComponent', () => {
   let component: FlightTrackingPageComponent;
@@ -8,7 +10,8 @@ describe('FlightTrackingPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FlightTrackingPageComponent ]
+      declarations: [ FlightTrackingPageComponent ],
+      imports:  [HttpClientModule, AppModule]
     })
     .compileComponents();
 

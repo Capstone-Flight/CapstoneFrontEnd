@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { RectangleNoFly } from 'src/app/objects/rectangle-no-fly/rectangle-no-fly';
 import { NoFlyZoneSubmittedComponent } from '../../no-fly-zone-submitted/no-fly-zone-submitted/no-fly-zone-submitted.component';
 import { CesiumService } from 'src/app/cesium.service';
+import { Url } from 'src/lib/utils/url';
 
 @Component({
   selector: 'app-rectangle-no-fly-zone',
@@ -101,15 +102,19 @@ export class RectangleNoFlyZoneComponent {
   }
 
   submit(): void {
+    //PLACEHOLDER
+    this.cesium.addRectangleNoFlyZone(this.rectangleNoFly);
+    /*
     // TODO
     //WILL MAKE HTTP CALL TO ADD NO FLY ZONE
-    this.httpClient.post<string>('http://34.198.166.4:9093/addNoFlyZone/rectangle',
+    this.httpClient.post<string>(Url.consumer('/addNoFlyZone/rectangle'),
      this.rectangleNoFly, this.httpOptions).subscribe( data => {
       console.log(data);
       this.cesium.getAndLoadNoFlyZones();
     }, error => {
       this.cesium.getAndLoadNoFlyZones();
     })
+    */
 
     document.getElementById("closeDialog")?.click();
     this.cesium.getAndLoadNoFlyZones();
